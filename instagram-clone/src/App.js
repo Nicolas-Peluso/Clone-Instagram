@@ -1,13 +1,23 @@
-import Header from './Header';
 import Style from "./app.module.css"
-import Feed from './Feed/Feed';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from './Home';
+import GlobalContext from "./GlobalContext";
+import UserLogin from "./User/UserLogin";
+import Header from './Header';
 
 function App() {
   return (
-    <div className={Style.Container}>
-      <Header />
-      <Feed />
-    </div>
+    <GlobalContext>
+      <div className={Style.Container}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<UserLogin />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </GlobalContext>
   );
 }
 
