@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import Style from "./index.module.css"
 
 ReactDOM.render(
-  <React.StrictMode>
+  <div className={Style.Container}>
+
     <App />
-  </React.StrictMode>,
+
+  </div>,
   document.getElementById('root')
 );
 
