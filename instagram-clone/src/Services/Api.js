@@ -14,10 +14,33 @@ export function POST_USERLOGIN(body) {
         url: Url + "/Login",
         options: {
             method: "POST",
-            Headers: {
-                "Content-Type": "Application.json"
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(body)
+        }
+    }
+}
+
+export function POST_LoginWithToken(token) {
+    return {
+        url: Url + "/get/user",
+        options: {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token,
+            },
+        }
+    }
+}
+
+export function POST_CADASTRO(formData) {
+    return {
+        url: Url + "/user/register",
+        options: {
+            method: "POST",
+            body: formData
         }
     }
 }

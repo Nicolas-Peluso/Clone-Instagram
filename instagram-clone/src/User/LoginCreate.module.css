@@ -1,0 +1,7 @@
+.ContainerFormu input[type="file"]{ 
+    border: none;
+}
+
+.ContainerFormu input{
+    display: flex;
+}

@@ -1,19 +1,19 @@
-import Style from "./app.module.css"
+import "./app.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from './Home';
 import GlobalContext from "./GlobalContext";
-import UserLogin from "./User/UserLogin";
 import Header from './Header';
+import Login from "./User/Login";
 
 function App() {
   return (
     <GlobalContext>
-      <div className={Style.Container}>
+      <div className="Container">
         <BrowserRouter>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="login" element={<UserLogin />} />
+            <Route path="login/*" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </div>

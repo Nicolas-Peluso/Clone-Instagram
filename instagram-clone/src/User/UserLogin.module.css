@@ -1,36 +1,5 @@
-.LoginFormContainer{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: flex-start;
-    justify-content: center;
-    align-items: center;
-    grid-column: 5 / 9;
-    width: 450px;
-    height: 450px;
-    box-shadow: 0 0 1px black;
-}
-
-.LoginFormContainer input{
-    margin: 5px;
-    width: 250px;
-    height: 40px;
-    outline: none;
-    border: 1px solid black;
-    border-radius: 2px;
-}
 .LoginFormContainer input::placeholder{
     padding-left: 20px;
-}
-
-.LoginFormContainer button{
-    padding: 10px;
-    font-size: 1em;
-    width: 100%;
-    margin-top: 20px;
-    background-color: transparent;
-    border: 1px solid black;
-    cursor: pointer;
 }
 
 .LoginFormContainer img{

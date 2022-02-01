@@ -22,7 +22,7 @@ function FeedPostage() {
                     <div className={Style.Container} key={postagem.UserPoster[0]["avatar"]}>
                         <div className={Style.ContainerAvatar}>
                             <img src={postagem.UserPoster[0]["avatar"]} alt='Avatar' className={Style.Avatar} />
-                            <p>{postagem.UserPoster[0]["Nome"]}</p>
+                            <p>{postagem.UserPoster[0]["Author"]}</p>
                         </div>
                         <img src={postagem.Foto} alt='FOto' />
                         <p>{postagem.UserPoster[0]["Nome"]} {postagem.Descrição}</p>

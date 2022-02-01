@@ -4,9 +4,10 @@ import LoGO from "./assets/logo.png"
 import Home from "./assets/home.svg"
 import USer from "./assets/user.svg"
 import { Link } from "react-router-dom"
+import { Context } from "../src/GlobalContext"
 
 function Header() {
-
+    const { login, data } = React.useContext(Context)
 
     return (
         <header className={Style.header}>
@@ -21,8 +22,8 @@ function Header() {
                     <Link to={"/"}>
                         <img src={Home} alt='Home' />
                     </Link>
-                    <Link to={"/login"}>
-                        <img src={USer} alt='USer' />
+                    <Link to={login ? "/conta" : "/login"}>
+                        {login ? <img src={data.Avatar} alt='USer' className={Style.USerImg} /> : <img src={USer} alt='USer' />}
                     </Link>
 
                 </div>
