@@ -5,6 +5,10 @@
     justify-content: space-around;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.24);
     grid-column: 1 / -1;
+    grid-row: 1;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 52000;
 }
 
 .Container{
@@ -43,4 +47,9 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.Logout{
+    height: 30px !important;
+    border-radius: 0;
 }

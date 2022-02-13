@@ -2,21 +2,18 @@ import React from 'react';
 import { Context } from "../GlobalContext"
 import Style from "./UserLogin.module.css"
 import Logo from "../assets/logo.png"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ErroComponente from '../helper/Erro';
 
 function UserLogin() {
-    const [type, setType] = React.useState(false)
     const [Email, setEmail] = React.useState("")
     const [Senha, setSenha] = React.useState("")
-    const { Login, erro, Loading, data, login } = React.useContext(Context)
-
-    const navigate = useNavigate()
+    const { Login, erro, Loading } = React.useContext(Context)
 
     function HandleLogin(e) {
         e.preventDefault()
         Login(Email, Senha)
     }
-    if (login) return navigate("/conta")
 
     return (
         <div className={`ContainerForm ${Style.LoginFormContainer}`}>
@@ -24,11 +21,11 @@ function UserLogin() {
             <form onSubmit={HandleLogin}>
                 <input type="text" placeholder='Email' onChange={({ target }) => { setEmail(target.value) }} />
                 <div>
-                    <input type={type === false ? "password" : "text"} placeholder='Senha' onChange={({ target }) => { setSenha(target.value) }} />
+                    <input type="password" placeholder='Senha' onChange={({ target }) => { setSenha(target.value) }} />
                 </div>
                 {Loading ? <button disabled className='button'>Login</button> : <button type='submit' className='button'>Login</button>}
             </form >
-            {login && navigate("/conta")}
+            {erro && <ErroComponente Erro={erro} />}
             <Link to={"/login/criar"}>
                 Criar Conta
             </Link>

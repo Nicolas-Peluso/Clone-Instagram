@@ -45,3 +45,29 @@ export function POST_CADASTRO(formData) {
     }
 }
 
+export function POST_PostagemEsspecifica(body) {
+    return {
+        url: Url + "/postagem/User",
+        options: {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        }
+    }
+}
+
+export function POST_PostarPostegem(body, token) {
+    return {
+        url: Url + "/postagem",
+        options: {
+            method: "POST",
+            headers: {
+                Authorization: 'Bearer ' + token,
+            },
+            body: body
+        }
+    }
+}
+
