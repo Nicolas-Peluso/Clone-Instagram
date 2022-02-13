@@ -1,0 +1,48 @@
+.ContainerUser{
+    width: 65%;
+    grid-column: 4 / -1;
+    grid-row: 2 / -1;
+}
+
+.UserPainel{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 200px 78%;
+    grid-template-rows: 60px 60px 60px;
+}
+.UserPainel .ProfileInformation{
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 60px;
+}
+.UserPainel .ProfileInformation h1{
+    font-size: 48px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+}
+.ProfilePhoto img{  
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.ContainerGridFotos{
+    height: 100%;
+    margin-top: 100px;
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ContainerGridFotos img{
+    width: 300px;
+    height: 300px;
+}
+
+.ContainerGridFotos img:hover{
+    transition: transform .4s;
+    cursor: pointer;
+    transform: scale(1.05);
+    opacity: .5;
+}

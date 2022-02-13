@@ -9,55 +9,67 @@ function GlobalContext({ children }) {
     const [Loading, setLoading] = React.useState(false)
     const [data, setData] = React.useState(false)
 
+
     React.useEffect(() => {
-        async function UserLoginToke() {
+        async function UserLoginToken() {
             const token = localStorage.getItem("TOKEN")
             if (!!token === false) return
+            let request;
+            let response;
             try {
                 setLoading(true)
                 setErro(false)
                 const { url, options } = POST_LoginWithToken(token)
-                const request = await fetch(url, options)
-                const response = await request.json()
+                request = await fetch(url, options)
+                response = await request.json()
+                if (response.TOKEN === undefined) throw new Error(response.message)
 
-                if (response.TOKEN === undefined) {
-                    setErro(response.message)
-                    setLoading(false)
-                } else {
-                    setLogin(true)
-                    setData(response)
-                }
+                localStorage.removeItem("TOKEN")
+                localStorage.setItem("TOKEN", response.TOKEN)
+                setLogin(true)
             }
             catch (e) {
+                setErro(`${e}`)
                 setLoading(false)
                 setLogin(false)
             } finally {
-                setLoading(true)
+                setLoading(false)
+                setData(response)
             }
         }
-        UserLoginToke()
+        UserLoginToken()
     }, [])
 
+    function Logout() {
+        setLogin(false)
+        setErro(null)
+        setLoading(null)
+        localStorage.removeItem("TOKEN")
+    }
+
     async function Login(Email, Senha) {
+        let request;
+        let response;
         try {
             setLoading(true)
             setErro(false)
             const { url, options } = POST_USERLOGIN({ Email, Senha })
-            const request = await fetch(url, options)
-            const response = await request.json()
-            if (response.TOKEN === undefined) {
-                setErro(response.message)
-                setLoading(false)
-            } else {
-                setLogin(true)
-                setData(response)
-                localStorage.setItem("TOKEN", response.TOKEN)
-            }
+            request = await fetch(url, options)
+            response = await request.json()
+            if (response.TOKEN === undefined) throw new Error(response.message)
+
+            localStorage.removeItem("TOKEN")
+            localStorage.setItem("TOKEN", response.TOKEN)
+            setLogin(true)
+
+
         } catch (e) {
+            setErro(`${e}`)
             setLoading(false)
             setLogin(false)
         } finally {
             setLoading(false)
+            setData(response)
         }
     }
 
@@ -81,7 +93,7 @@ function GlobalContext({ children }) {
     }
 
     return (
-        <Context.Provider value={{ login, Login, erro, Loading, data, CADASTRO }}>
+        <Context.Provider value={{ login, Login, erro, Loading, data, CADASTRO, setErro, Logout }}>
             {
                 children
             }

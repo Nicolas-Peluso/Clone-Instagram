@@ -18,8 +18,8 @@ function FeedPostage() {
     return (
         <>
             {
-                Postagens && Postagens.map(postagem => (
-                    <div className={Style.Container} key={postagem.UserPoster[0]["avatar"]}>
+                Postagens && Postagens.map((postagem, index) => (
+                    <div className={Style.Container} key={index}>
                         <div className={Style.ContainerAvatar}>
                             <img src={postagem.UserPoster[0]["avatar"]} alt='Avatar' className={Style.Avatar} />
                             <p>{postagem.UserPoster[0]["Author"]}</p>
